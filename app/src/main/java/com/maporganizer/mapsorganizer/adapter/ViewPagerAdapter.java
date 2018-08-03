@@ -1,4 +1,4 @@
-package com.maporganizer.mapsorganizer;
+package com.maporganizer.mapsorganizer.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

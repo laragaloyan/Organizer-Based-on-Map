@@ -1,4 +1,4 @@
-package com.maporganizer.mapsorganizer;
+package com.maporganizer.mapsorganizer.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -17,6 +17,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.maporganizer.mapsorganizer.R;
 
 
 public class MapFragment extends Fragment  implements OnMapReadyCallback {
@@ -27,7 +28,6 @@ public class MapFragment extends Fragment  implements OnMapReadyCallback {
     public MapFragment() {
         // Required empty public constructor
     }
-
 
 
     @Override
