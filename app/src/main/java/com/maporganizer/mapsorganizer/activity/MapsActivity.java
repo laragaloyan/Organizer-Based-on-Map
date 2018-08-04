@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -21,9 +22,7 @@ import com.maporganizer.mapsorganizer.fragment.MapFragment;
 import com.maporganizer.mapsorganizer.R;
 import com.maporganizer.mapsorganizer.adapter.ViewPagerAdapter;
 
-import java.util.Objects;
 
-import static android.support.v4.app.ActivityCompat.requestPermissions;
 
 public class MapsActivity extends AppCompatActivity {
     //implements OnMapReadyCallback
@@ -83,10 +82,10 @@ public class MapsActivity extends AppCompatActivity {
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*//*
     }*/
 
+    private LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
     private void trackLocation() {
         // Acquire a reference to the system Location Manager
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
         // Define a listener that responds to location updates
         LocationListener locationListener = new LocationListener() {
@@ -112,6 +111,10 @@ public class MapsActivity extends AppCompatActivity {
             return;
         }
 
+        //setting criteria
+        requestLocation();
+
+        //request
         if (locationManager != null) {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 20, locationListener);
         }
@@ -129,5 +132,12 @@ public class MapsActivity extends AppCompatActivity {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_CODE);
             }
         }
+    }
+
+    private void requestLocation() {
+        Criteria criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setPowerRequirement(Criteria.POWER_HIGH);
+        locationManager.getBestProvider(criteria,true);
     }
 }
