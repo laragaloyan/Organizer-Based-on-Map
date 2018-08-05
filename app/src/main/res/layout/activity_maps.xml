@@ -56,6 +56,7 @@
              android:layout_height="wrap_content"
              android:layout_alignParentEnd="true"
              android:layout_alignParentTop="true"
+             android:background="@color/cardview_light_background"
              android:onClick="onClick"
              android:text="Search"
              android:visibility="visible" />
